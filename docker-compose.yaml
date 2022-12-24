@@ -13,3 +13,20 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./readarr/config:/config
+  vpn:
+    container_name: vpn
+    image: thrnz/docker-wireguard-pia
+    cap_add:
+      - NET_ADMIN
+    environment:
+      LOC: mexico
+      LOCAL_NETWORK: 192.168.10.0/24
+      PASS_FILE: /config/pass
+      USER_FILE: /config/user
+    healthcheck:
+      test: ping -c 1 www.google.com || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - ./vpn/config:/config:ro
