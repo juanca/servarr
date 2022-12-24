@@ -59,5 +59,7 @@ services:
       - 8787:8787 # readarr
       - 9091:9091 # torrents
       - 9696:9696 # prowlarr
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
     volumes:
       - ./vpn/config:/config:ro
