@@ -18,16 +18,16 @@ services:
   torrents:
     image: linuxserver/transmission
     container_name: torrents
+    depends_on:
+      - vpn
     environment:
       - PUID=00002
       - PGID=00002
       - TZ="US/Pacific"
+    network_mode: "service:vpn"
     volumes:
       - ./torrents/config:/config
       - ./torrents/downloads:/downloads
-    network_mode: "service:vpn"
-    depends_on:
-      - vpn
   vpn:
     container_name: vpn
     image: thrnz/docker-wireguard-pia
