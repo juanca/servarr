@@ -13,6 +13,19 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./readarr/config:/config
+  torrents:
+    image: linuxserver/transmission
+    container_name: torrents
+    environment:
+      - PUID=00002
+      - PGID=00002
+      - TZ="US/Pacific"
+    volumes:
+      - ./torrents/config:/config
+      - ./torrents/downloads:/downloads
+    network_mode: "service:vpn"
+    depends_on:
+      - vpn
   vpn:
     container_name: vpn
     image: thrnz/docker-wireguard-pia
