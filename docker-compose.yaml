@@ -1,6 +1,18 @@
 version: "3.7"
 
 services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:develop
+    container_name: prowlarr
+    depends_on:
+      - vpn
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    network_mode: "service:vpn"
+    volumes:
+      - ./prowlarr/config:/config
   readarr:
     container_name: readarr
     image: cr.hotio.dev/hotio/readarr
@@ -46,5 +58,6 @@ services:
     ports:
       - 8787:8787 # readarr
       - 9091:9091 # torrents
+      - 9696:9696 # prowlarr
     volumes:
       - ./vpn/config:/config:ro
