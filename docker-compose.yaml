@@ -4,15 +4,17 @@ services:
   readarr:
     container_name: readarr
     image: cr.hotio.dev/hotio/readarr
-    ports:
-      - "8787:8787"
+    depends_on:
+      - vpn
     environment:
       - PUID=1000
       - PGID=1000
       - UMASK=002
       - TZ=Etc/UTC
+    network_mode: "service:vpn"
     volumes:
       - ./readarr/config:/config
+      - ./torrents/downloads:/downloads
   torrents:
     image: linuxserver/transmission
     container_name: torrents
@@ -41,5 +43,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+    ports:
+      - 8787:8787 # readarr
+      - 9091:9091 # torrents
     volumes:
       - ./vpn/config:/config:ro
