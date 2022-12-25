@@ -1,4 +1,5 @@
 .idea/
+data/
 prowlarr/config/
 readarr/config/
 sonarr/config/
