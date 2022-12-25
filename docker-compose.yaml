@@ -26,7 +26,7 @@ services:
     network_mode: "service:vpn"
     volumes:
       - ./readarr/config:/config
-      - ./torrents/downloads:/downloads
+      - ./data/:/data
   torrents:
     image: linuxserver/transmission
     container_name: torrents
@@ -39,7 +39,7 @@ services:
     network_mode: "service:vpn"
     volumes:
       - ./torrents/config:/config
-      - ./torrents/downloads:/downloads
+      - ./data/torrents:/downloads
   vpn:
     container_name: vpn
     image: thrnz/docker-wireguard-pia
