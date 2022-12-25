@@ -27,6 +27,20 @@ services:
     volumes:
       - ./readarr/config:/config
       - ./data/:/data
+  sonarr:
+    image: linuxserver/sonarr
+    depends_on:
+      - vpn
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=US/Pacific
+    network_mode: "service:vpn"
+    volumes:
+      - ./sonarr/config:/config
+      - ./data:/data
+    restart: unless-stopped
   torrents:
     image: linuxserver/transmission
     container_name: torrents
@@ -57,6 +71,7 @@ services:
       retries: 3
     ports:
       - 8787:8787 # readarr
+      - 8989:8989 # sonarr
       - 9091:9091 # torrents
       - 9696:9696 # prowlarr
     sysctls:

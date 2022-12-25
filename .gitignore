@@ -1,6 +1,7 @@
 .idea/
 prowlarr/config/
 readarr/config/
+sonarr/config/
 torrents/config/
 torrents/downloads/
 vpn/config/
