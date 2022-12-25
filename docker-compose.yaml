@@ -13,6 +13,19 @@ services:
     restart: unless-stopped
     volumes:
       - ./prowlarr/config:/config
+  radarr:
+    image: linuxserver/radarr:latest
+    depends_on:
+      - vpn
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=US/Pacific
+    network_mode: "service:vpn"
+    restart: unless-stopped
+    volumes:
+      - ./radarr/config:/config
+      - ./data:/data
   readarr:
     image: linuxserver/readarr:develop
     depends_on:
@@ -68,6 +81,7 @@ services:
       timeout: 10s
       retries: 3
     ports:
+      - 7878:7878 # radarr
       - 8787:8787 # readarr
       - 8989:8989 # sonarr
       - 9091:9091 # torrents
