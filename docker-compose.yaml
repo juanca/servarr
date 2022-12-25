@@ -3,7 +3,6 @@ version: "3.7"
 services:
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:develop
-    container_name: prowlarr
     depends_on:
       - vpn
     environment:
@@ -14,7 +13,6 @@ services:
     volumes:
       - ./prowlarr/config:/config
   readarr:
-    container_name: readarr
     image: cr.hotio.dev/hotio/readarr
     depends_on:
       - vpn
@@ -43,7 +41,6 @@ services:
     restart: unless-stopped
   torrents:
     image: linuxserver/transmission
-    container_name: torrents
     depends_on:
       - vpn
     environment:
