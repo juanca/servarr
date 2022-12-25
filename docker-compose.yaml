@@ -9,7 +9,6 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=US/Pacific
-      - UMASK=002
     network_mode: "service:vpn"
     volumes:
       - ./prowlarr/config:/config
@@ -21,7 +20,6 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=US/Pacific
-      - UMASK=002
     network_mode: "service:vpn"
     volumes:
       - ./readarr/config:/config
@@ -34,7 +32,6 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=US/Pacific
-      - UMASK=002
     network_mode: "service:vpn"
     volumes:
       - ./sonarr/config:/config
@@ -48,7 +45,6 @@ services:
       - PUID=00002
       - PGID=00002
       - TZ=US/Pacific
-      - UMASK=002
     network_mode: "service:vpn"
     volumes:
       - ./torrents/config:/config
