@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:develop
+    image: linuxserver/prowlarr:develop
     depends_on:
       - vpn
     environment:
@@ -14,7 +14,7 @@ services:
     volumes:
       - ./prowlarr/config:/config
   readarr:
-    image: cr.hotio.dev/hotio/readarr
+    image: linuxserver/readarr:develop
     depends_on:
       - vpn
     environment:
@@ -27,7 +27,7 @@ services:
       - ./readarr/config:/config
       - ./data/:/data
   sonarr:
-    image: linuxserver/sonarr
+    image: linuxserver/sonarr:latest
     depends_on:
       - vpn
     environment:
@@ -41,7 +41,7 @@ services:
       - ./data:/data
     restart: unless-stopped
   torrents:
-    image: linuxserver/transmission
+    image: linuxserver/transmission:latest
     depends_on:
       - vpn
     environment:
@@ -55,7 +55,7 @@ services:
       - ./data/torrents:/downloads
   vpn:
     container_name: vpn
-    image: thrnz/docker-wireguard-pia
+    image: thrnz/docker-wireguard-pia:latest
     cap_add:
       - NET_ADMIN
     environment:
