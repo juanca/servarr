@@ -10,6 +10,7 @@ services:
       - PGID=1000
       - TZ=US/Pacific
     network_mode: "service:vpn"
+    restart: unless-stopped
     volumes:
       - ./prowlarr/config:/config
   readarr:
@@ -21,6 +22,7 @@ services:
       - PGID=1000
       - TZ=US/Pacific
     network_mode: "service:vpn"
+    restart: unless-stopped
     volumes:
       - ./readarr/config:/config
       - ./data/:/data
@@ -33,10 +35,10 @@ services:
       - PGID=1000
       - TZ=US/Pacific
     network_mode: "service:vpn"
+    restart: unless-stopped
     volumes:
       - ./sonarr/config:/config
       - ./data:/data
-    restart: unless-stopped
   torrents:
     image: linuxserver/transmission:latest
     depends_on:
@@ -46,6 +48,7 @@ services:
       - PGID=00002
       - TZ=US/Pacific
     network_mode: "service:vpn"
+    restart: unless-stopped
     volumes:
       - ./torrents/config:/config
       - ./data/torrents:/downloads
