@@ -25,7 +25,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./radarr/config:/config
-      - ./data:/data
+      - ./data/media/movies:/movies
+      - ./data/downloads:/downloads
   readarr:
     image: linuxserver/readarr:develop
     depends_on:
@@ -38,7 +39,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./readarr/config:/config
-      - ./data/:/data
+      - ./data/media/books:/books
+      - ./data/downloads:/downloads
   sonarr:
     image: linuxserver/sonarr:latest
     depends_on:
@@ -51,7 +53,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./sonarr/config:/config
-      - ./data:/data
+      - ./data/media/tv:/tv
+      - ./data/downloads:/downloads
   torrents:
     image: linuxserver/transmission:latest
     depends_on:
@@ -64,7 +67,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./torrents/config:/config
-      - ./data/torrents:/downloads
+      - ./data/downloads:/downloads
   vpn:
     container_name: vpn
     image: thrnz/docker-wireguard-pia:latest
