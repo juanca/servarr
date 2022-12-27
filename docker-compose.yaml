@@ -1,6 +1,22 @@
 version: "3.7"
 
 services:
+  lidarr:
+    image: linuxserver/lidarr:latest
+    depends_on:
+      - prowlarr
+      - torrents
+      - vpn
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=US/Pacific
+    network_mode: "service:vpn"
+    restart: unless-stopped
+    volumes:
+      - ./lidarr/config:/config
+      - ./data/media/music:/music
+      - ./data/downloads:/downloads
   prowlarr:
     image: linuxserver/prowlarr:develop
     depends_on:
@@ -85,6 +101,7 @@ services:
       retries: 3
     ports:
       - 7878:7878 # radarr
+      - 8686:8686 # lidarr
       - 8787:8787 # readarr
       - 8989:8989 # sonarr
       - 9091:9091 # torrents
