@@ -18,4 +18,4 @@ https://wiki.servarr.com/
    - [readarr](http://localhost:8787): tag `books`, path `/books`
    - [sonarr](http://localhost:8989): tag `tv`, path `/tv`
    - [whisparr](http://localhost:6969): tag `xxx`, path `/xxx`
-1. Setup [plex](http://localhost:32400/web)
+1. Setup [plex](http://localhost:32400/web): sign in, select user with permissions
