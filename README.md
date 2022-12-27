@@ -17,3 +17,5 @@ https://wiki.servarr.com/
    - [radarr](http://localhost:7878): tag `movies`, path `/movies`
    - [readarr](http://localhost:8787): tag `books`, path `/books`
    - [sonarr](http://localhost:8989): tag `tv`, path `/tv`
+   - [whisparr](http://localhost:6969): tag `xxx`, path `/xxx`
+1. Setup [plex](http://localhost:32400/web)

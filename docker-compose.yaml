@@ -17,6 +17,20 @@ services:
       - ./lidarr/config:/config
       - ./data/media/music:/music
       - ./data/downloads:/downloads
+  plex:
+    image: linuxserver/plex:latest
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - VERSION=docker
+    network_mode: "service:vpn"
+    restart: unless-stopped
+    volumes:
+      - ./plex/config:/config
+      - ./data/media/movies:/movies
+      - ./data/media/music:/music
+      - ./data/media/tv:/tv
+      - ./data/media/xxx:/xxx
   prowlarr:
     image: linuxserver/prowlarr:develop
     depends_on:
@@ -113,6 +127,7 @@ services:
       - 8989:8989 # sonarr
       - 9091:9091 # torrents
       - 9696:9696 # prowlarr
+      - 32400:32400 # plex
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
       - net.ipv6.conf.default.disable_ipv6=1
