@@ -32,6 +32,8 @@ services:
   radarr:
     image: linuxserver/radarr:latest
     depends_on:
+      - prowlarr
+      - torrents
       - vpn
     environment:
       - PUID=1000
@@ -46,6 +48,8 @@ services:
   readarr:
     image: linuxserver/readarr:develop
     depends_on:
+      - prowlarr
+      - torrents
       - vpn
     environment:
       - PUID=1000
@@ -60,6 +64,8 @@ services:
   sonarr:
     image: linuxserver/sonarr:latest
     depends_on:
+      - prowlarr
+      - torrents
       - vpn
     environment:
       - PUID=1000
