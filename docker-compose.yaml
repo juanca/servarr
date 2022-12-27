@@ -8,8 +8,8 @@ services:
       - torrents
       - vpn
     environment:
-      - PUID=1000
       - PGID=1000
+      - PUID=1000
       - TZ=US/Pacific
     network_mode: "service:vpn"
     restart: unless-stopped
@@ -36,8 +36,8 @@ services:
     depends_on:
       - vpn
     environment:
-      - PUID=1000
       - PGID=1000
+      - PUID=1000
       - TZ=US/Pacific
     network_mode: "service:vpn"
     restart: unless-stopped
@@ -50,8 +50,8 @@ services:
       - torrents
       - vpn
     environment:
-      - PUID=1000
       - PGID=1000
+      - PUID=1000
       - TZ=US/Pacific
     network_mode: "service:vpn"
     restart: unless-stopped
@@ -66,8 +66,8 @@ services:
       - torrents
       - vpn
     environment:
-      - PUID=1000
       - PGID=1000
+      - PUID=1000
       - TZ=US/Pacific
     network_mode: "service:vpn"
     restart: unless-stopped
@@ -82,8 +82,8 @@ services:
       - torrents
       - vpn
     environment:
-      - PUID=1000
       - PGID=1000
+      - PUID=1000
       - TZ=US/Pacific
     network_mode: "service:vpn"
     restart: unless-stopped
@@ -96,8 +96,8 @@ services:
     depends_on:
       - vpn
     environment:
-      - PUID=1000
       - PGID=1000
+      - PUID=1000
       - TZ=US/Pacific
     network_mode: "service:vpn"
     restart: unless-stopped
@@ -142,8 +142,8 @@ services:
       - torrents
       - vpn
     environment:
-      - PUID=1000
       - PGID=1000
+      - PUID=1000
       - TZ=US/Pacific
     network_mode: "service:vpn"
     restart: unless-stopped
