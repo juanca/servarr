@@ -12,7 +12,7 @@ https://wiki.servarr.com/
    - Apps
 1. Setup apps
    - Download client with tags
-   - Settings > Media managemanet > Root path
+   - Settings > Media management > Root path
    - [lidarr](http://localhost:8686): tag `music`, path: `/music`
    - [radarr](http://localhost:7878): tag `movies`, path `/movies`
    - [readarr](http://localhost:8787): tag `books`, path `/books`
