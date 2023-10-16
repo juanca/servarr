@@ -11,7 +11,10 @@ services:
       - PGID=1000
       - PUID=1000
       - TZ=US/Pacific
-    network_mode: "service:vpn"
+    networks:
+      - vpn
+    ports:
+      - "8686:8686"
     restart: unless-stopped
     volumes:
       - ./lidarr/config:/config
@@ -23,7 +26,10 @@ services:
       - PGID=1000
       - PUID=1000
       - VERSION=docker
-    network_mode: "service:vpn"
+    networks:
+      - vpn
+    ports:
+      - "32400:32400"
     restart: unless-stopped
     volumes:
       - ./plex/config:/config
@@ -39,7 +45,10 @@ services:
       - PGID=1000
       - PUID=1000
       - TZ=US/Pacific
-    network_mode: "service:vpn"
+    networks:
+      - vpn
+    ports:
+      - "9696:9696"
     restart: unless-stopped
     volumes:
       - ./prowlarr/config:/config
@@ -53,7 +62,10 @@ services:
       - PGID=1000
       - PUID=1000
       - TZ=US/Pacific
-    network_mode: "service:vpn"
+    networks:
+      - vpn
+    ports:
+      - "7878:7878" # radarr
     restart: unless-stopped
     volumes:
       - ./radarr/config:/config
@@ -69,7 +81,10 @@ services:
       - PGID=1000
       - PUID=1000
       - TZ=US/Pacific
-    network_mode: "service:vpn"
+    networks:
+      - vpn
+    ports:
+      - "8787:8787"
     restart: unless-stopped
     volumes:
       - ./readarr/config:/config
@@ -85,7 +100,10 @@ services:
       - PGID=1000
       - PUID=1000
       - TZ=US/Pacific
-    network_mode: "service:vpn"
+    networks:
+      - vpn
+    ports:
+      - "8989:8989"
     restart: unless-stopped
     volumes:
       - ./sonarr/config:/config
@@ -99,7 +117,12 @@ services:
       - PGID=1000
       - PUID=1000
       - TZ=US/Pacific
+    # Use `networks` + `ports` to access web ui. Otherwise, `network_mode` for secure downloading
     network_mode: "service:vpn"
+#    networks:
+#      - vpn
+#    ports:
+#      - 9091:9091
     restart: unless-stopped
     volumes:
       - ./torrents/config:/config
@@ -111,7 +134,6 @@ services:
       - NET_ADMIN
     environment:
       LOC: mexico
-      LOCAL_NETWORK: 192.168.10.0/24
       PASS_FILE: /config/pass
       USER_FILE: /config/user
     healthcheck:
@@ -119,15 +141,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    ports:
-      - 6969:6969 # whisparr
-      - 7878:7878 # radarr
-      - 8686:8686 # lidarr
-      - 8787:8787 # readarr
-      - 8989:8989 # sonarr
-      - 9091:9091 # torrents
-      - 9696:9696 # prowlarr
-      - 32400:32400 # plex
+    networks:
+      - vpn
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
       - net.ipv6.conf.default.disable_ipv6=1
@@ -145,9 +160,15 @@ services:
       - PGID=1000
       - PUID=1000
       - TZ=US/Pacific
-    network_mode: "service:vpn"
+    networks:
+      - vpn
+    ports:
+      - "6969:6969"
     restart: unless-stopped
     volumes:
       - ./whisparr/config:/config
       - ./data/media/xxx:/xxx
       - ./data/downloads:/downloads
+
+networks:
+  vpn:
