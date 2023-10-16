@@ -141,6 +141,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+    ports:
+      - "9091:9091" # torrents
     networks:
       - vpn
     sysctls:
