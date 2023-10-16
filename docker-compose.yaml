@@ -117,16 +117,20 @@ services:
       - PGID=1000
       - PUID=1000
       - TZ=US/Pacific
-    # Use `networks` + `ports` to access web ui. Otherwise, `network_mode` for secure downloading
     network_mode: "service:vpn"
-#    networks:
-#      - vpn
-#    ports:
-#      - 9091:9091
     restart: unless-stopped
     volumes:
       - ./torrents/config:/config
       - ./data/downloads:/downloads
+  torrents-webui:
+    image: alpine/socat
+    depends_on:
+      - vpn
+    command: "TCP-LISTEN:9091,fork,reuseaddr TCP:vpn:9091"
+    networks:
+      - vpn
+    ports:
+      - "9091:9091"
   vpn:
     container_name: vpn
     image: thrnz/docker-wireguard-pia:latest
@@ -141,8 +145,6 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    ports:
-      - "9091:9091" # torrents
     networks:
       - vpn
     sysctls:
