@@ -18,8 +18,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./lidarr/config:/config
-      - ./data/media/music:/music
-      - ./data/downloads:/downloads
+      - ./data:/data
   plex:
     image: linuxserver/plex:latest
     environment:
@@ -69,8 +68,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./radarr/config:/config
-      - ./data/media/movies:/movies
-      - ./data/downloads:/downloads
+      - ./data:/data
   readarr:
     image: linuxserver/readarr:develop
     depends_on:
@@ -88,8 +86,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./readarr/config:/config
-      - ./data/media/books:/books
-      - ./data/downloads:/downloads
+      - ./data:/data
   sonarr:
     image: linuxserver/sonarr:latest
     depends_on:
@@ -107,8 +104,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./sonarr/config:/config
-      - ./data/media/tv:/tv
-      - ./data/downloads:/downloads
+      - ./data:/data
   torrents:
     image: linuxserver/transmission:latest
     depends_on:
@@ -121,7 +117,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./torrents/config:/config
-      - ./data/downloads:/downloads
+      - ./data/downloads:/data/downloads
   torrents-webui:
     image: alpine/socat
     depends_on:
@@ -171,8 +167,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./whisparr/config:/config
-      - ./data/media/xxx:/xxx
-      - ./data/downloads:/downloads
+      - ./data:/data
 
 networks:
   vpn:

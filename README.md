@@ -13,13 +13,18 @@ https://wiki.servarr.com/
    - Indexers
    - Settings > Apps (e.g. http://lidarr:8686)
 1. Setup apps
-   - Download client with tags (i.e. http://vpn:9091)
+   - Download client with category/tags (i.e. http://vpn:9091)
+     - [lidarr](http://localhost:8686): `music`
+     - [radarr](http://localhost:7878): `movies`
+     - [readarr](http://localhost:8787): `books`
+     - [sonarr](http://localhost:8989): `tv`
+     - [whisparr](http://localhost:6969): `xxx` 
    - Settings > Media management > Root path
-     - [lidarr](http://localhost:8686): tag `music`, path `/music`
-     - [radarr](http://localhost:7878): tag `movies`, path `/movies`
-     - [readarr](http://localhost:8787): tag `books`, path `/books`
-     - [sonarr](http://localhost:8989): tag `tv`, path `/tv`
-     - [whisparr](http://localhost:6969): tag `xxx`, path `/xxx`
+     - [lidarr](http://localhost:8686): `/data/media/music`
+     - [radarr](http://localhost:7878): `/data/media/movies`
+     - [readarr](http://localhost:8787): `/data/media/books`
+     - [sonarr](http://localhost:8989): `/data/media/tv`
+     - [whisparr](http://localhost:6969): `/data/media/xxx`
 1. Setup [plex](http://localhost:32400/web): sign in, select user with permissions
 1. (Optional) Setup lists
    - Settings > Import lists
