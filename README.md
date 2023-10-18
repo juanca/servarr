@@ -25,7 +25,8 @@ https://wiki.servarr.com/
      - [readarr](http://localhost:8787): `/data/media/books`
      - [sonarr](http://localhost:8989): `/data/media/tv`
      - [whisparr](http://localhost:6969): `/data/media/xxx`
-1. Setup [plex](http://localhost:32400/web): sign in, select user with permissions
+1. Setup [plex](http://localhost:32400/web) (Note: possibly use a claim token)
+2. Setup [overseerr](http://localhost:5055)
 1. (Optional) Setup lists
    - Settings > Import lists
    - lidarr: ???
