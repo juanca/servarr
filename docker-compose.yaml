@@ -6,7 +6,6 @@ services:
     depends_on:
       - prowlarr
       - torrents
-      - vpn
     environment:
       - PGID=1000
       - PUID=1000
@@ -36,8 +35,6 @@ services:
       - ./data/media/xxx:/xxx
   prowlarr:
     image: linuxserver/prowlarr:develop
-    depends_on:
-      - vpn
     environment:
       - PGID=1000
       - PUID=1000
@@ -54,7 +51,6 @@ services:
     depends_on:
       - prowlarr
       - torrents
-      - vpn
     environment:
       - PGID=1000
       - PUID=1000
@@ -72,7 +68,6 @@ services:
     depends_on:
       - prowlarr
       - torrents
-      - vpn
     environment:
       - PGID=1000
       - PUID=1000
@@ -90,7 +85,6 @@ services:
     depends_on:
       - prowlarr
       - torrents
-      - vpn
     environment:
       - PGID=1000
       - PUID=1000
@@ -119,7 +113,7 @@ services:
   torrents-webui:
     image: alpine/socat
     depends_on:
-      - vpn
+      - torrents
     command: "TCP-LISTEN:9091,fork,reuseaddr TCP:vpn:9091"
     networks:
       - vpn
@@ -153,7 +147,6 @@ services:
     depends_on:
       - prowlarr
       - torrents
-      - vpn
     environment:
       - PGID=1000
       - PUID=1000
