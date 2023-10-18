@@ -18,6 +18,23 @@ services:
     volumes:
       - ./lidarr/config:/config
       - ./data:/data
+  overseerr:
+    image: linuxserver/overseerr:latest
+    depends_on:
+      - plex
+      - radarr
+      - sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=US/Pacific
+    networks:
+      - vpn
+    ports:
+      - "5055:5055"
+    restart: unless-stopped
+    volumes:
+      - ./overseerr/config:/config
   plex:
     image: linuxserver/plex:latest
     environment:
