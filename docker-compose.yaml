@@ -41,6 +41,8 @@ services:
       - PGID=1000
       - PUID=1000
       - VERSION=docker
+    networks:
+      - vpn
     ports:
       - "32400:32400"
     restart: unless-stopped
