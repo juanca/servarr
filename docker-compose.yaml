@@ -32,7 +32,7 @@ services:
       - "8686:8686"
     restart: unless-stopped
     volumes:
-      - ./lidarr/config:/config
+      - ./lidarr:/config
       - ./data:/data
   overseerr:
     image: linuxserver/overseerr:latest
@@ -50,7 +50,7 @@ services:
       - "5055:5055"
     restart: unless-stopped
     volumes:
-      - ./overseerr/config:/config
+      - ./overseerr:/config
   plex:
     image: linuxserver/plex:latest
     environment:
@@ -63,7 +63,7 @@ services:
       - "32400:32400"
     restart: unless-stopped
     volumes:
-      - ./plex/config:/config
+      - ./plex:/config
       - ./data/media/movies:/movies
       - ./data/media/music:/music
       - ./data/media/tv:/tv
@@ -80,7 +80,7 @@ services:
       - "9696:9696"
     restart: unless-stopped
     volumes:
-      - ./prowlarr/config:/config
+      - ./prowlarr:/config
   radarr:
     image: linuxserver/radarr:latest
     depends_on:
@@ -96,7 +96,7 @@ services:
       - "7878:7878" # radarr
     restart: unless-stopped
     volumes:
-      - ./radarr/config:/config
+      - ./radarr:/config
       - ./data:/data
   readarr:
     image: linuxserver/readarr:develop
@@ -113,7 +113,7 @@ services:
       - "8787:8787"
     restart: unless-stopped
     volumes:
-      - ./readarr/config:/config
+      - ./readarr:/config
       - ./data:/data
   sonarr:
     image: linuxserver/sonarr:latest
@@ -130,7 +130,7 @@ services:
       - "8989:8989"
     restart: unless-stopped
     volumes:
-      - ./sonarr/config:/config
+      - ./sonarr:/config
       - ./data:/data
   torrents:
     image: linuxserver/transmission:latest
@@ -143,7 +143,7 @@ services:
     network_mode: "service:vpn"
     restart: unless-stopped
     volumes:
-      - ./torrents/config:/config
+      - ./torrents:/config
       - ./data/downloads:/data/downloads
   torrents-webui:
     image: alpine/socat
@@ -176,7 +176,7 @@ services:
       - net.ipv6.conf.all.disable_ipv6=1
       - net.ipv6.conf.lo.disable_ipv6=1
     volumes:
-      - ./vpn/config:/config:ro
+      - ./vpn:/config:ro
   whisparr:
     image: cr.hotio.dev/hotio/whisparr:nightly
     depends_on:
@@ -192,7 +192,7 @@ services:
       - "6969:6969"
     restart: unless-stopped
     volumes:
-      - ./whisparr/config:/config
+      - ./whisparr:/config
       - ./data:/data
 
 networks:
