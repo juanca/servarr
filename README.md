@@ -28,10 +28,3 @@ https://wiki.servarr.com/
 1. Setup [plex](http://localhost:32400/web) (Note: possibly use a claim token)
 1. Setup [overseerr](http://localhost:5055): unified requests for tv and movies interface 
 1. Setup [jellyfin](http://localhost:8096)
-1. (Optional) Setup lists
-   - Settings > Import lists
-   - lidarr: ???
-   - radarr: plex, ???
-   - readarr: ???
-   - sonarr: plex, ???
-   - whisparr: ???rad
