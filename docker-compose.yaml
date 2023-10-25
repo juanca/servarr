@@ -1,5 +1,8 @@
 version: "3.8"
 
+networks:
+  vpn:
+
 services:
   jellyfin:
     image: linuxserver/jellyfin:latest
@@ -194,6 +197,3 @@ services:
     volumes:
       - ./whisparr:/config
       - ./data:/data
-
-networks:
-  vpn:
