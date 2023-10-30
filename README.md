@@ -8,7 +8,8 @@ https://wiki.servarr.com/
    - `vpn/config/user` and `vpn/config/pass`
    - Check vpn logs for successful connection
 1. Boot up: `docker-compose up`
-1. Setup download and upload limits for [transmission](http://localhost:9091)
+1. Setup download path and upload limits for [transmission](http://localhost:9091)
+   - Download into `/data/downloads
 1. Setup [prowlarr](http://localhost:9696)
    - Indexers
    - Settings > Apps (e.g. http://lidarr:8686)

@@ -140,7 +140,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./torrents:/config
-      - synology-downloads:/downloads
+      - synology-downloads:/data/downloads
   torrents-webui:
     image: alpine/socat
     depends_on:
