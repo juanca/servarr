@@ -12,11 +12,7 @@ services:
       - TZ=US/Pacific
     volumes:
       - ./jellyfish:/config
-      - ./data/media/books:/data/books
-      - ./data/media/movies:/data/movies
-      - ./data/media/music:/data/music
-      - ./data/media/tv:/data/tv
-      - ./data/media/xxx:/data/xxx
+      - synology:/data
     ports:
       - "8096:8096"
     restart: unless-stopped
@@ -36,7 +32,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./lidarr:/config
-      - ./data:/data
+      - synology:/data
   overseerr:
     image: linuxserver/overseerr:latest
     depends_on:
@@ -67,10 +63,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./plex:/config
-      - ./data/media/movies:/movies
-      - ./data/media/music:/music
-      - ./data/media/tv:/tv
-      - ./data/media/xxx:/xxx
+      - synology:/data
   prowlarr:
     image: linuxserver/prowlarr:develop
     environment:
@@ -100,7 +93,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./radarr:/config
-      - ./data:/data
+      - synology:/data
   readarr:
     image: linuxserver/readarr:develop
     depends_on:
@@ -117,7 +110,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./readarr:/config
-      - ./data:/data
+      - synology:/data
   sonarr:
     image: linuxserver/sonarr:latest
     depends_on:
@@ -134,7 +127,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./sonarr:/config
-      - ./data:/data
+      - synology:/data
   torrents:
     image: linuxserver/transmission:latest
     depends_on:
@@ -147,7 +140,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./torrents:/config
-      - ./data/downloads:/data/downloads
+      - synology-downloads:/downloads
   torrents-webui:
     image: alpine/socat
     depends_on:
@@ -196,4 +189,16 @@ services:
     restart: unless-stopped
     volumes:
       - ./whisparr:/config
-      - ./data:/data
+      - synology:/data
+
+volumes:
+  synology:
+    driver_opts:
+      device: "//playastation/servarr"
+      o: "addr=playastation,rw,username=servarr,password=6`V#M|Wx,file_mode=0777,dir_mode=0777"
+      type: "cifs"
+  synology-downloads:
+    driver_opts:
+      device: "//playastation/servarr/downloads"
+      o: "addr=playastation,rw,username=servarr,password=6`V#M|Wx,file_mode=0777,dir_mode=0777"
+      type: "cifs"
