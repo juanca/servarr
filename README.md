@@ -78,6 +78,20 @@ network-volume/
 2. Set environment variable in docker-compose.yml with `PLEX_CLAIM=`
 3. Restart plex container and inspect logs
 
+### [stash](http://localhost:9999/)
+
+1. Set blob/database to filesystem with path `/stash/blobs/`
+2. Run Tasks > Scan library with perceptual hashes turned on
+3. Run Tasks > Generate content
+4. Set Metadata Providers > Endpoint from [profile information](https://stashdb.org)
+5. Run Tasks > Identify with
+    - Set organized flag
+    - Studio & Parent: Merge + Create missing
+    - Performers: Merge + Create missing
+    - Tags: Merge + Create missing
+    - Set as default
+    - Identify
+
 ### [overseerr](http://localhost:5055)
 
 ???

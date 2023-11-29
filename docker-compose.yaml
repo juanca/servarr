@@ -128,6 +128,28 @@ services:
     volumes:
       - ./sonarr:/config
       - synology:/data
+  stash:
+    image: stashapp/stash:latest
+    container_name: stash
+    environment:
+      - STASH_STASH=/data/media/xxx/
+      - STASH_GENERATED=/stash/generated/
+      - STASH_METADATA=/stash/metadata/
+      - STASH_CACHE=/stash/cache/
+      - STASH_PORT=9999
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "10"
+        max-size: "2m"
+    ports:
+      - "9999:9999"
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./stash:/root/.stash
+      - synology:/data
+      - synology-stash:/stash
   torrents:
     image: linuxserver/transmission:latest
     depends_on:
@@ -200,5 +222,10 @@ volumes:
   synology-downloads:
     driver_opts:
       device: "//playastation/servarr/downloads"
+      o: "addr=playastation,rw,username=servarr,password=6`V#M|Wx,file_mode=0777,dir_mode=0777"
+      type: "cifs"
+  synology-stash:
+    driver_opts:
+      device: "//playastation/servarr/stash"
       o: "addr=playastation,rw,username=servarr,password=6`V#M|Wx,file_mode=0777,dir_mode=0777"
       type: "cifs"
