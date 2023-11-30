@@ -84,13 +84,41 @@ network-volume/
 2. Run Tasks > Scan library with perceptual hashes turned on
 3. Run Tasks > Generate content
 4. Set Metadata Providers > Endpoint from [profile information](https://stashdb.org)
-5. Run Tasks > Identify with
-    - Set organized flag
-    - Studio & Parent: Merge + Create missing
-    - Performers: Merge + Create missing
-    - Tags: Merge + Create missing
-    - Set as default
-    - Identify
+5. Tag existing content through a workaround (since Identify does not work):
+   - Go to scenes > tagger, choose an appropriate per page value (mine was 120) that will not slow down your browser too much. Scrape all.
+   - Create all tags in the database by running the following -- take a break and do something else: `document.querySelectorAll('svg[data-icon="plus"]').forEach((node) => node.parentElement.click())`
+   - Refresh. Scrape all -- sorry, tags multi-select ui is wonky with automation
+   - Create all studios and performers in the database by running the following -- take a break and do something else:
+      ```
+      Array.from(document.querySelectorAll('button')).filter(button => button.innerText === "Create").reduce((lastPromise, button, i, array) => lastPromise.then(() => {
+      console.log("Opening dialog", i, " of ", array.length, " at ", button);
+      if (!document.body.contains(button)) return Promise.resolve();
+   
+      button.click(); 
+      return new Promise((resolve) => {
+        let id1 = setInterval(() => {
+          console.log("Looking for save in dialog...");
+          Array.from(document.querySelectorAll('.modal-footer button')).filter(button => button.innerText === "Save").forEach(node => { 
+            console.log("Closing dialog...");
+            node.click(); 
+            clearInterval(id1); 
+            let id2 = setInterval(() => {
+              console.log("Waiting for dialog to close...");
+              let save = Array.from(document.querySelectorAll('.modal-footer button')).filter(button => button.innerText === "Save");
+              if (save.length === 0) {
+                clearInterval(id2); 
+                resolve(); 
+              }
+            }, 250);
+          });
+        }, 250);
+      });
+      }), Promise.resolve())
+      ```
+
+   - Look through the whole page and make sure everything matches. Edit anything wrong.
+   - Save: `Array.from(document.querySelectorAll('button')).filter(button => button.innerText === "Save").forEach(button => button.click())`
+   - Go to next page and rinse and repeat.
 
 ### [overseerr](http://localhost:5055)
 
