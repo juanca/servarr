@@ -50,29 +50,29 @@ services:
     restart: unless-stopped
     volumes:
       - ./overseerr:/config
-  plex:
-    image: plexinc/pms-docker:latest
-    environment:
-      - PLEX_CLAIM=claim-pzyfwjps6coGEfuAxAMp
-      - PLEX_GID=1000
-      - PLEX_UID=1000
-      - TZ=US/Pacific
-    networks:
-      - vpn
-    ports:
-      - "32400:32400" # GUI
-      - "1900:1900/udp" # DLNA server
-      - "32469:32469/tcp" # DLNA server
-      - "8324:8324/tcp" # Roku
-      - "32410:32410/udp" # Plex to plex
-      - "32412:32412/udp" # Plex to plex
-      - "32413:32413/udp" # Plex to plex
-      - "32414:32414/udp" # Plex to plex
-    restart: unless-stopped
-    volumes:
-      - ./plex:/config
-      - synology:/data
-      - synology-plex:/transcode
+#  plex:
+#    image: plexinc/pms-docker:latest
+#    environment:
+#      - PLEX_CLAIM=claim-pzyfwjps6coGEfuAxAMp
+#      - PLEX_GID=1000
+#      - PLEX_UID=1000
+#      - TZ=US/Pacific
+#    networks:
+#      - vpn
+#    ports:
+#      - "32400:32400" # GUI
+#      - "1900:1900/udp" # DLNA server
+#      - "32469:32469/tcp" # DLNA server
+#      - "8324:8324/tcp" # Roku
+#      - "32410:32410/udp" # Plex to plex
+#      - "32412:32412/udp" # Plex to plex
+#      - "32413:32413/udp" # Plex to plex
+#      - "32414:32414/udp" # Plex to plex
+#    restart: unless-stopped
+#    volumes:
+#      - ./plex:/config
+#      - synology:/data
+#      - synology-plex:/transcode
   prowlarr:
     image: linuxserver/prowlarr:develop
     environment:
