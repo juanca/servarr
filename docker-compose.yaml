@@ -36,7 +36,7 @@ services:
   overseerr:
     image: linuxserver/overseerr:latest
     depends_on:
-      - plex
+#      - plex
       - radarr
       - sonarr
     environment:
