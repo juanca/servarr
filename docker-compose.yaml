@@ -51,19 +51,28 @@ services:
     volumes:
       - ./overseerr:/config
   plex:
-    image: linuxserver/plex:latest
+    image: plexinc/pms-docker:latest
     environment:
-      - PGID=1000
-      - PUID=1000
-      - VERSION=docker
+      - PLEX_CLAIM=claim-pzyfwjps6coGEfuAxAMp
+      - PLEX_GID=1000
+      - PLEX_UID=1000
+      - TZ=US/Pacific
     networks:
       - vpn
     ports:
-      - "32400:32400"
+      - "32400:32400" # GUI
+      - "1900:1900/udp" # DLNA server
+      - "32469:32469/tcp" # DLNA server
+      - "8324:8324/tcp" # Roku
+      - "32410:32410/udp" # Plex to plex
+      - "32412:32412/udp" # Plex to plex
+      - "32413:32413/udp" # Plex to plex
+      - "32414:32414/udp" # Plex to plex
     restart: unless-stopped
     volumes:
       - ./plex:/config
       - synology:/data
+      - synology-plex:/transcode
   prowlarr:
     image: linuxserver/prowlarr:develop
     environment:
@@ -222,6 +231,11 @@ volumes:
   synology-downloads:
     driver_opts:
       device: "//playastation/servarr/downloads"
+      o: "addr=playastation,rw,username=servarr,password=6`V#M|Wx,file_mode=0777,dir_mode=0777"
+      type: "cifs"
+  synology-plex:
+    driver_opts:
+      device: "//playastation/servarr/plex"
       o: "addr=playastation,rw,username=servarr,password=6`V#M|Wx,file_mode=0777,dir_mode=0777"
       type: "cifs"
   synology-stash:
