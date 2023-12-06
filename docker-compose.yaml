@@ -4,18 +4,6 @@ networks:
   vpn:
 
 services:
-  jellyfin:
-    image: linuxserver/jellyfin:latest
-    environment:
-      - PGID=1000
-      - PUID=1000
-      - TZ=US/Pacific
-    volumes:
-      - ./jellyfish:/config
-      - synology:/data
-    ports:
-      - "8096:8096"
-    restart: unless-stopped
   lidarr:
     image: linuxserver/lidarr:latest
     depends_on:
