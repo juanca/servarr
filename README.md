@@ -89,7 +89,10 @@ network-volume/
 
 ### [overseerr](http://localhost:5055)
 
-???
+1. Connect to plex media server with `host.docker.internal`
+2. Connect to radarr with `http://radarr`
+3. Connect to sonarr with `http://sonarr`
+4. TODO: multiple instances of each for subtitles and/or anime?
 
 ### [jellyfin](http://localhost:8096)
 
