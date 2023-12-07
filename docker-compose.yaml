@@ -109,7 +109,7 @@ services:
       - ./readarr:/config
       - synology:/data
   sonarr:
-    image: linuxserver/sonarr:latest
+    image: linuxserver/sonarr:develop
     depends_on:
       - prowlarr
       - torrents
