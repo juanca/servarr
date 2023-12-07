@@ -78,6 +78,9 @@ network-volume/
 1. Get claim token from https://plex.tv/claim
 2. Set environment variable in docker-compose.yml with `PLEX_CLAIM=`
 3. Restart plex container and inspect logs
+4. Open lidarr > Settings > Connect: plex at `host.docker.internal` for music
+5. Open radarr > Settings > Connect: plex at `host.docker.internal` for movies
+4. Open sonarr > Settings > Connect: plex at `host.docker.internal` for tv shows
 
 ### [stash](http://localhost:9999/)
 
@@ -85,7 +88,7 @@ network-volume/
 2. Run Tasks > Scan library with all the generate features turned on
 3. Set Metadata Providers > Endpoint from [profile information](https://stashdb.org)
 4. Run Tasks > Identify without any of the match guards
-5. Connect whisparr to stash at (osx) `host.docker.internal`
+5. Open whisparr > Settings > Connect: stash at `host.docker.internal`
 
 ### [overseerr](http://localhost:5055)
 
