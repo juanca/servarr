@@ -192,6 +192,10 @@ services:
       - net.ipv6.conf.lo.disable_ipv6=1
     volumes:
       - ./vpn:/config:ro
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
   whisparr:
     image: cr.hotio.dev/hotio/whisparr:nightly
     depends_on:
