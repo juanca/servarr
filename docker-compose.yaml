@@ -19,6 +19,7 @@ services:
       - "8686:8686"
     restart: unless-stopped
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./lidarr:/config
       - synology:/data
   overseerr:
@@ -37,6 +38,7 @@ services:
       - "5055:5055"
     restart: unless-stopped
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./overseerr:/config
 #  plex:
 #    image: plexinc/pms-docker:latest
@@ -58,6 +60,7 @@ services:
 #      - "32414:32414/udp" # Plex to plex
 #    restart: unless-stopped
 #    volumes:
+#      - /etc/localtime:/etc/localtime:ro
 #      - ./plex:/config
 #      - synology:/data
 #      - synology-plex:/transcode
@@ -73,6 +76,7 @@ services:
       - "9696:9696"
     restart: unless-stopped
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./prowlarr:/config
   radarr:
     image: linuxserver/radarr:latest
@@ -89,6 +93,7 @@ services:
       - "7878:7878" # radarr
     restart: unless-stopped
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./radarr:/config
       - synology:/data
   readarr:
@@ -106,6 +111,7 @@ services:
       - "8787:8787"
     restart: unless-stopped
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./readarr:/config
       - synology:/data
   sonarr:
@@ -123,6 +129,7 @@ services:
       - "8989:8989"
     restart: unless-stopped
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./sonarr:/config
       - synology:/data
   stash:
@@ -158,6 +165,7 @@ services:
     network_mode: "service:vpn"
     restart: unless-stopped
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./torrents:/config
       - synology-downloads:/data/downloads
   torrents-webui:
@@ -191,6 +199,7 @@ services:
       - net.ipv6.conf.all.disable_ipv6=1
       - net.ipv6.conf.lo.disable_ipv6=1
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./vpn:/config:ro
   watchtower:
     image: containrrr/watchtower
@@ -211,6 +220,7 @@ services:
       - "6969:6969"
     restart: unless-stopped
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./whisparr:/config
       - synology:/data
 
