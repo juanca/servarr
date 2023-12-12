@@ -134,7 +134,6 @@ services:
       - synology:/data
   stash:
     image: stashapp/stash:latest
-    container_name: stash
     environment:
       - STASH_STASH=/data/media/xxx/
       - STASH_GENERATED=/stash/generated/
