@@ -114,6 +114,15 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./readarr:/config
       - synology:/data
+  recyclarr:
+    image: recyclarr/recyclarr
+    environment:
+      - TZ=US/Pacific
+    networks:
+      - vpn
+    user: 1000:1000
+    volumes:
+      - ./recyclarr:/config
   sonarr:
     image: linuxserver/sonarr:develop
     depends_on:

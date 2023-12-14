@@ -10,24 +10,26 @@ https://wiki.servarr.com/
 ### docker
 
 1. Create network volume with following directory structure:
-
-```
-network-volume/
-  downloads/
-    incomplete/
-    complete/
-      books/
-      movies/
-      music/
-      tv/
-      xxx/
-  media/
-    books/
-    movies/
-    music/
-    tv/
-    xxx/
-``` 
+    ```
+    network-volume/
+      downloads/
+        incomplete/
+        complete/
+          anime/
+          tv/
+          books/
+          movies/
+          music/
+          tv/
+          xxx/
+      media/
+        anime/
+        books/
+        movies/
+        music/
+        tv/
+        xxx/
+    ``` 
 2. Boot up: `docker-compose up`
 3. Verify vpn logs for successful connection: `docker-compose logs vpn`
 
@@ -64,7 +66,17 @@ network-volume/
 
 1. Add download client
 2. Use `tv` category to avoid seeing irrelevant downloads
+3. Enable "Rename Episodes"
 3. Add root path (under settings > media management) for `/data/media/tv`
+4. Add root path (under settings > media management) for `/data/media/anime`
+5. Delete all the Settings > Profiles
+6. Remove any "remux" qualities in the Any profile (cannot be deleted unfortunately)
+
+### recyclarr
+
+1. Run `docker compose run recyclarr config create -t web-2160p-v4 -t anime-sonarr-v4`
+1. Merge the two configs in `./recyclarr/configs/` into a new one called `./recyclarr/configs/sonarr-v4.yml`
+1. Fill in sonarr details e.g. Base URL: http://sonarr:8989/
 
 ### [whisparr](http://localhost:6969)
 
@@ -95,6 +107,8 @@ network-volume/
 1. Connect to plex media server with `host.docker.internal`
 2. Connect to radarr with `http://radarr`
 3. Connect to sonarr with `http://sonarr`
+   - Choose appropriate root folder and quality profile
+   - Choose appropriate anime root folder and anime quality profile
 4. TODO: multiple instances of each for subtitles and/or anime?
 
 ### [jellyfin](http://localhost:8096)
