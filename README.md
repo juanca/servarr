@@ -74,9 +74,7 @@ https://wiki.servarr.com/
 
 ### recyclarr
 
-1. Run `docker compose run recyclarr config create -t web-2160p-v4 -t anime-sonarr-v4`
-1. Merge the two configs in `./recyclarr/configs/` into a new one called `./recyclarr/configs/sonarr-v4.yml`
-1. Fill in sonarr details e.g. Base URL: http://sonarr:8989/
+1. Open and change the API key in `./recyclarr/configs/sonarr-v4.yml`
 
 ### [whisparr](http://localhost:6969)
 
