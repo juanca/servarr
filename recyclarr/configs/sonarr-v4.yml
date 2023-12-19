@@ -15,7 +15,6 @@ sonarr:
     api_key: 189c2276d7aa4710a9df07192102db11
 
     include:
-      # Comment out any of the following includes to disable them
       - template: sonarr-quality-definition-anime
       - template: sonarr-v4-quality-profile-anime
       - template: sonarr-v4-custom-formats-anime
@@ -41,9 +40,3 @@ sonarr:
           - 2016d1676f5ee13a5b7257ff86ac9a93 # SDR
         quality_profiles:
           - name: WEB-2160p
-
-#      # Optional
-#      - trash_ids:
-#        quality_profiles:
-#          - name: WEB-2160p
-#            # score: 0 # Uncomment this line to enable SDR releases
