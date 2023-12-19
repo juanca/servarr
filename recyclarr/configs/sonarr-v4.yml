@@ -65,5 +65,7 @@ sonarr:
           # HDR10Plus Boost - Uncomment the next line if any of your devices DO support HDR10+
           # - 0dad0a507451acddd754fe6dc3a7f5e7 # HDR10Plus Boost
           - 2016d1676f5ee13a5b7257ff86ac9a93 # SDR
+          - d6819cba26b1a6508138d25fb5e32293 # HD Bluray Tier 01
+          - c2216b7b8aa545dc1ce8388c618f8d57 # HD Bluray Tier 02
         quality_profiles:
           - name: WEB-2160p
