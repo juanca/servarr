@@ -66,7 +66,6 @@ https://wiki.servarr.com/
 
 1. Add download client
 2. Use `tv` category to avoid seeing irrelevant downloads
-3. Enable "Rename Episodes"
 3. Add root path (under settings > media management) for `/data/media/tv`
 4. Add root path (under settings > media management) for `/data/media/anime`
 5. Delete all the Settings > Profiles

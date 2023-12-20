@@ -14,6 +14,16 @@ sonarr:
     base_url: http://sonarr:8989
     api_key: 189c2276d7aa4710a9df07192102db11
 
+    # Media Naming Configuration
+    media_naming:
+      series: plex
+      season: default
+      episodes:
+        rename: true
+        standard: default
+        daily: default
+        anime: default
+
     include:
       - template: sonarr-quality-definition-anime
       - template: sonarr-v4-quality-profile-anime
