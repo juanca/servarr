@@ -76,6 +76,7 @@ https://wiki.servarr.com/
 
 1. Open and change the API key in `./recyclarr/configs/sonarr-v4.yml`
 2. Open and change the API key in `./recyclarr/configs/radarr.yml`
+3. Sync the configurations with `docker compose run -it recyclarr sync --debug`
 
 ### [whisparr](http://localhost:6969)
 
