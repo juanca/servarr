@@ -39,6 +39,16 @@ https://wiki.servarr.com/
 2. Set a reasonable download limit
 3. Set a reasonable upload limit  
 
+### [qbittorrent](http://localhost:8080)
+
+1. Set paths in Settings > Downloads
+   - Default save path: `/data/downloads`
+   - Keep incomplete torrents in: `/data/downloads/incomplete`
+   - Copy .torrent files to: `/data/torrents/incomplete`
+   - Copy .torrent files for finished downloads to: `/data/torrents/complete`
+2. Set reasonable global rate limits in Settings > Speed
+3. Test IP address with https://ipleak.net/
+
 ### [prowlarr](http://localhost:9696)
 
 1. Add public indexers
@@ -52,10 +62,9 @@ https://wiki.servarr.com/
 
 ### [radarr](http://localhost:7878)
 
-1. Add download client
-2. Use `movies` category to avoid seeing irrelevant downloads
-3. Add root path (under settings > media management) for `/data/media/movies`
-4. Delete all the Settings > Profiles (except "Any")
+1. Add [qBittorrent download client](http://vpn:8080) and use `movies` category
+2. Add root path (under settings > media management) for `/data/media/movies`
+3. Delete all the Settings > Profiles (except "Any")
 
 ### [readarr](http://localhost:8787)
 

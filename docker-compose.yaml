@@ -78,6 +78,29 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./prowlarr:/config
+  qbittorrent:
+    image: linuxserver/qbittorrent:latest
+    depends_on:
+      - vpn
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=Etc/UTC
+      - WEBUI_PORT=8080
+    network_mode: "service:vpn"
+    restart: unless-stopped
+    volumes:
+      - ./qbittorrent:/config
+      - synology-downloads:/data/downloads
+  qbittorrent-webui:
+    image: alpine/socat
+    depends_on:
+      - qbittorrent
+    command: "TCP-LISTEN:8080,fork,reuseaddr TCP:vpn:8080"
+    networks:
+      - vpn
+    ports:
+      - "8080:8080"
   radarr:
     image: linuxserver/radarr:latest
     depends_on:
