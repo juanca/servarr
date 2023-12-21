@@ -55,8 +55,7 @@ https://wiki.servarr.com/
 1. Add download client
 2. Use `movies` category to avoid seeing irrelevant downloads
 3. Add root path (under settings > media management) for `/data/media/movies`
-4. Delete all the Settings > Profiles
-5. Remove any "remux" qualities in the Any profile (cannot be deleted unfortunately)
+4. Delete all the Settings > Profiles (except "Any")
 
 ### [readarr](http://localhost:8787)
 

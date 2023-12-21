@@ -25,7 +25,25 @@ radarr:
       - template: radarr-quality-profile-anime
       - template: radarr-custom-formats-anime
 
-    # Custom Formats: https://recyclarr.dev/wiki/yaml/config-reference/custom-formats/
+    quality_profiles:
+      - name: Any
+        upgrade:
+          allowed: true
+          until_quality: Bluray-2160p
+        qualities:
+          - name: Bluray-2160p
+          - name: WEBDL-2160p
+          - name: WEBRip-2160p
+          - name: Bluray-1080p
+          - name: WEBDL-1080p
+          - name: WEBRip-1080p
+          - name: Bluray-720p
+          - name: WEBDL-720p
+          - name: WEBRip-720p
+          - name: HDTV-2160p
+          - name: HDTV-1080p
+          - name: HDTV-720p
+
     custom_formats:
       - trash_ids:
           - 064af5f084a0a24458cc8ecd3220f93f # Uncensored
