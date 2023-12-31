@@ -185,29 +185,6 @@ services:
       - ./stash:/root/.stash
       - synology:/data
       - synology-stash:/stash
-  torrents:
-    image: linuxserver/transmission:latest
-    depends_on:
-      - vpn
-    environment:
-      - PGID=1000
-      - PUID=1000
-      - TZ=US/Pacific
-    network_mode: "service:vpn"
-    restart: unless-stopped
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ./torrents:/config
-      - synology-downloads:/data/downloads
-  torrents-webui:
-    image: alpine/socat
-    depends_on:
-      - torrents
-    command: "TCP-LISTEN:9091,fork,reuseaddr TCP:vpn:9091"
-    networks:
-      - vpn
-    ports:
-      - "9091:9091"
   vpn:
     container_name: vpn
     image: thrnz/docker-wireguard-pia:latest

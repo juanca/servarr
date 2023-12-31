@@ -13,15 +13,6 @@ https://wiki.servarr.com/
     ```
     network-volume/
       downloads/
-        incomplete/
-        complete/
-          anime/
-          tv/
-          books/
-          movies/
-          music/
-          tv/
-          xxx/
       media/
         anime/
         books/
@@ -33,19 +24,16 @@ https://wiki.servarr.com/
 2. Boot up: `docker-compose up`
 3. Verify vpn logs for successful connection: `docker-compose logs vpn`
 
-### [torrents](http://localhost:9091)
-
-1. Set download path to `/data/downloads` for proper symlink paths. Shares parent directory with `/data/media`
-2. Set a reasonable download limit
-3. Set a reasonable upload limit  
-
 ### [qbittorrent](http://localhost:8080)
 
-1. Set paths in Settings > Downloads
+1. Update Settings > Downloads > Saving Management 
+   - Default Torrent Management Mode: `Automatic`
+   - When Torrent Category changed: `Relocate torrent`
+   - When Default Save Path changed: `Relocate affected torrent`
+   - When Category Save Path changed: `Relocate affected torrent`
+   - Use Subcategories
    - Default save path: `/data/downloads`
    - Keep incomplete torrents in: `/data/downloads/incomplete`
-   - Copy .torrent files to: `/data/torrents/incomplete`
-   - Copy .torrent files for finished downloads to: `/data/torrents/complete`
 2. Set reasonable global rate limits in Settings > Speed
 3. Test IP address with https://ipleak.net/
 
@@ -56,8 +44,7 @@ https://wiki.servarr.com/
 
 ### [lidarr](http://localhost:8686)
 
-1. Add download client pointed to http://vpn.9091
-2. Use `music` category to avoid seeing irrelevant downloads
+1. Add [qBittorrent download client](http://vpn:8080) and use `music` category
 3. Add root path (under settings > media management) for `/data/media/music`
 
 ### [radarr](http://localhost:7878)
@@ -68,14 +55,12 @@ https://wiki.servarr.com/
 
 ### [readarr](http://localhost:8787)
 
-1. Add download client
-2. Use `books` category to avoid seeing irrelevant downloads
+1. Add [qBittorrent download client](http://vpn:8080) and use `books` category
 3. Add root path (under settings > media management) for `/data/media/books`
 
 ### [sonarr](http://localhost:8989)
 
-1. Add download client
-2. Use `tv` category to avoid seeing irrelevant downloads
+1. Add [qBittorrent download client](http://vpn:8080) and use `tv` category
 3. Add root path (under settings > media management) for `/data/media/tv`
 4. Add root path (under settings > media management) for `/data/media/anime`
 5. Delete all the Settings > Profiles
