@@ -182,6 +182,7 @@ services:
       LOC: mexico
       PASS_FILE: /config/pass
       USER_FILE: /config/user
+      PORT_FORWARDING: 1
     healthcheck:
       test: ping -c 1 www.google.com || exit 1
       interval: 30s
@@ -189,6 +190,9 @@ services:
       retries: 3
     networks:
       - vpn
+    ports:
+      - "6881:6881" # qbittorrent port forwarding
+      - "6881:6881/udp" # qbittorrent port forwarding
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
       - net.ipv6.conf.default.disable_ipv6=1
