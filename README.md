@@ -74,8 +74,7 @@ https://wiki.servarr.com/
 
 ### [whisparr](http://localhost:6969)
 
-1. Add download client
-2. Use `xxx` category to avoid seeing irrelevant downloads
+1. Add [qBittorrent download client](http://vpn:8080) and use `xxx` category
 3. Add root path (under settings > media management) for `/data/media/xxx`
 
 ### [plex](http://localhost:32400/)
