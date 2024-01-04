@@ -6,9 +6,6 @@ networks:
 services:
   lidarr:
     image: linuxserver/lidarr:latest
-    depends_on:
-      - prowlarr
-      - torrents
     environment:
       - PGID=1000
       - PUID=1000
@@ -103,9 +100,6 @@ services:
       - "8080:8080"
   radarr:
     image: linuxserver/radarr:latest
-    depends_on:
-      - prowlarr
-      - torrents
     environment:
       - PGID=1000
       - PUID=1000
@@ -121,9 +115,6 @@ services:
       - synology:/data
   readarr:
     image: linuxserver/readarr:develop
-    depends_on:
-      - prowlarr
-      - torrents
     environment:
       - PGID=1000
       - PUID=1000
@@ -148,9 +139,6 @@ services:
       - ./recyclarr:/config
   sonarr:
     image: linuxserver/sonarr:develop
-    depends_on:
-      - prowlarr
-      - torrents
     environment:
       - PGID=1000
       - PUID=1000
@@ -215,9 +203,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
   whisparr:
     image: cr.hotio.dev/hotio/whisparr:nightly
-    depends_on:
-      - prowlarr
-      - torrents
     environment:
       - PGID=1000
       - PUID=1000
