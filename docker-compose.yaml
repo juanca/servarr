@@ -206,7 +206,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   whisparr:
-    image: cr.hotio.dev/hotio/whisparr:nightly
+    image: ghcr.io/hotio/whisparr:nightly
     environment:
       - PGID=1000
       - PUID=1000
