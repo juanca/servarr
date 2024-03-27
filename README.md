@@ -46,6 +46,7 @@ https://wiki.servarr.com/
 
 1. Add [qBittorrent download client](http://vpn:8080) and use `music` category
 3. Add root path (under settings > media management) for `/data/media/music`
+4. Rename tracks (under settings > media management) to organize music
 
 ### [radarr](http://localhost:7878)
 
