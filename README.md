@@ -104,7 +104,3 @@ https://wiki.servarr.com/
    - Choose appropriate root folder and quality profile
    - Choose appropriate anime root folder and anime quality profile
 4. TODO: multiple instances of each for subtitles and/or anime?
-
-### [jellyfin](http://localhost:8096)
-
-???
