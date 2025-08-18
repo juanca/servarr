@@ -3,5 +3,12 @@
 *.zip
 */MediaCover/*
 */logs/*
+*/asp/*
+*/db/*
 *.db
+*.db-shm
+*.db-wal
+*.pid
 
+prowlarr/Definitions/*
+prowlarr/Sentry/*
