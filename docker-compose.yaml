@@ -111,21 +111,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./radarr:/config
       - synology:/data
-  readarr:
-    image: linuxserver/readarr:develop
-    environment:
-      - PGID=1000
-      - PUID=1000
-      - TZ=US/Pacific
-    networks:
-      - vpn
-    ports:
-      - "8787:8787"
-    restart: unless-stopped
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ./readarr:/config
-      - synology:/data
   recyclarr:
     image: recyclarr/recyclarr
     environment:
